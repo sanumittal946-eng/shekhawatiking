@@ -24,7 +24,14 @@ app.use(securityHeaders);
 const allowedOrigins = (process.env.ALLOWED_ORIGINS || 'http://localhost:3000').split(',');
 app.use(cors({
   origin(origin, callback) {
-    if (!origin || allowedOrigins.includes(origin)) {
+    if (!origin) {
+      return callback(null, true);
+    }
+    const isLocalhost = origin.startsWith('http://localhost:') || origin.startsWith('http://127.0.0.1:');
+    const isRender = origin.endsWith('.onrender.com');
+    const isAllowedEnv = allowedOrigins.includes(origin) || allowedOrigins.includes(origin + '/');
+
+    if (isLocalhost || isRender || isAllowedEnv) {
       callback(null, true);
     } else {
       callback(new Error('Not allowed by CORS'));
