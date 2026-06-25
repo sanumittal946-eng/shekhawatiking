@@ -236,6 +236,7 @@ router.get('/history', async (req, res) => {
       ? Math.min(Math.max(requestedLimit, 1), 365)
       : 90;
 
+    const key = todayKey();
     const [rows] = await pool.query(
       `SELECT
          DATE_FORMAT(date_key, '%Y-%m-%d') AS dateKey,
@@ -243,9 +244,10 @@ router.get('/history', async (req, res) => {
          four_pm AS four,
          DATE_FORMAT(updated_at, '%Y-%m-%d %H:%i:%s') AS updatedAt
        FROM daily_numbers
+       WHERE date_key < ?
        ORDER BY date_key DESC
        LIMIT ?`,
-      [limit]
+      [key, limit]
     );
 
     res.json({ history: rows, count: rows.length });
