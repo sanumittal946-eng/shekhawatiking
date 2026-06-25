@@ -73,7 +73,9 @@
       nextSlotLabel = state.nextSlotLabel;
     }
 
-    nextSlotLabelEl.textContent = nextSlotLabel;
+    if (nextSlotLabelEl) {
+      nextSlotLabelEl.textContent = nextSlotLabel;
+    }
 
     const formatted = formatCountdown(remaining);
     const [h, m, s] = formatted.split(':');
