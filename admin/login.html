@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Admin Login — shekhawatiking | SK Design</title>
+  <link rel="icon" type="image/png" href="../assets/logo.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Sora:wght@600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body>
+  <main class="admin-page" role="main">
+    <div class="glass-card">
+      <header class="glass-card-header">
+        <img src="../assets/logo.png" alt="shekhawatiking SK Design" class="site-logo site-logo--admin">
+        <h1>Admin Login</h1>
+        <p class="site-name">shekhawatiking</p>
+        <p>Sign in to manage scheduled numbers</p>
+      </header>
+
+      <form id="loginForm" novalidate>
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input
+            type="text"
+            id="username"
+            class="form-input"
+            placeholder="Enter username"
+            autocomplete="username"
+            required
+            minlength="3"
+            maxlength="32"
+            pattern="[a-zA-Z0-9_]+"
+          >
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            class="form-input"
+            placeholder="Enter your password"
+            autocomplete="current-password"
+            required
+          >
+        </div>
+
+        <p class="form-error" id="loginError" role="alert"></p>
+
+        <button type="submit" class="btn btn-primary" id="loginBtn">
+          Sign In
+        </button>
+      </form>
+
+      <p class="login-footer">
+        <a href="/">&larr; Back to display</a>
+      </p>
+      <p class="server-hint" id="serverHint" hidden>
+        Start the backend: <code>cd backend &amp;&amp; npm start</code> then open
+        <a href="http://localhost:3000/admin/login.html">http://localhost:3000/admin/login.html</a>
+      </p>
+    </div>
+  </main>
+
+  <script src="../js/api-config.js"></script>
+  <script src="../js/utils.js"></script>
+  <script src="../js/data-service.js"></script>
+  <script src="../js/admin-login.js"></script>
+</body>
+</html>

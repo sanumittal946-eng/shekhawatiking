@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="shekhawatiking — SK Design. Live number updates at 12 PM and 8 PM daily.">
+  <meta name="theme-color" content="#ffffff">
+  <title>shekhawatiking — SK Design</title>
+  <link rel="icon" type="image/png" href="assets/logo.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Sora:wght@600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+  <main class="page fade-in" role="main">
+    <header class="site-header">
+      <img src="assets/logo.png" alt="shekhawatiking SK Design" class="site-logo" width="220" height="auto">
+      <h1 class="visually-hidden">shekhawatiking</h1>
+    </header>
+    <article class="number-card" aria-label="shekhawatiking number display">
+      <!-- Loading overlay -->
+      <div class="loading-overlay" id="loadingOverlay" aria-live="polite" aria-busy="true">
+        <div class="loader" role="status">
+          <span class="visually-hidden">Loading number…</span>
+        </div>
+      </div>
+
+      <!-- Number display -->
+      <div class="number-display-wrapper">
+        <div
+          class="number-display glow-pulse"
+          id="numberDisplay"
+          aria-live="polite"
+          aria-atomic="true"
+        >0</div>
+      </div>
+
+      <!-- Countdown -->
+      <section class="countdown-section" aria-label="Countdown to next update">
+        <p class="countdown-label">The next number will show in:</p>
+        <div class="countdown-timer" id="countdownTimer" aria-live="off">
+          <span class="segment" id="hours">00</span>:<span class="segment" id="minutes">00</span>:<span class="segment" id="seconds">00</span>
+        </div>
+        <div class="next-slot-badge">
+          <span class="dot" aria-hidden="true"></span>
+          <span>Next update at <strong id="nextSlotLabel">12:00 PM</strong></span>
+        </div>
+      </section>
+    </article>
+
+    <!-- Recent numbers history -->
+    <section class="history-card" aria-label="Recent Numbers History">
+      <h2 class="history-title">Recent Results</h2>
+      <div class="history-table-wrap">
+        <table class="history-table">
+          <thead>
+            <tr>
+              <th scope="col">Date</th>
+              <th scope="col">12:00 PM</th>
+              <th scope="col">08:00 PM</th>
+            </tr>
+          </thead>
+          <tbody id="historyBody">
+            <tr>
+              <td colspan="3" class="history-empty">Loading history...</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <footer class="page-footer">
+      <a href="admin/login.html" class="admin-link" aria-label="Admin login">Admin</a>
+    </footer>
+  </main>
+
+  <!-- Visually hidden utility -->
+  <style>
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+  </style>
+
+  <script src="js/api-config.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/data-service.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
